@@ -1,0 +1,132 @@
+<% provide(:title, 'Log in')%>
+<h1>Log in</h1>
+
+<body style = "background-color:white;">
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Header -->
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#header-collapse-content">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="header-collapse-content">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- end of Header -->
+
+
+    <div class = "loginSection">
+      <form method="post">
+         <!-- <div class = "loginTitle">
+            <span>Pro</span><span>Space</span>
+        </div> -->
+        <div class = "loginTitle">
+            <img src="img/ProSpace_Logo.jpg">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control input-lg inputBorder" id="loginUsername" placeholder="Username" name="username">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control input-lg inputBorder" id="loginPassword" placeholder="Password" name="password">
+        </div>
+        <!-- <div class="g-recaptcha" data-sitekey="6LfFjgMTAAAAAMATfSxrX0q5tCWGqqxOYbpoopw1" style = "width:100%;"></div> -->
+        <div class = "row loginButtonSection">
+            <button id="loginButton" class="btn btn-warning btn-lg">Sign In</button>
+        </div>
+        <div class = "row">
+          <div class="checkbox col-md-6 col-sm-12 col-xs-12">
+            <label>
+              <input id="loginRememberMe" type="checkbox"> Remember me
+            </label>
+          </div>
+          <div class ="col-md-6 col-sm-12 col-xs-12 forgotPasswordLink">
+            <a class = "btn btn-link btn-lg" id = "forgotPasswordButton" href="" >Forgot password?</a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+        <!-- Footer -->
+    <!-- <footer class="text-center">
+        <div class="footer-below">
+            <div class="container">
+                Copyright &copy; ProSpace 2015
+            </div>
+        </div>
+    </footer> -->
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/alert.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/button.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/carousel.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/collapse.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/dropdown.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tab.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/scrollspy.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/popover.js"></script>
+    <script src="bower_components/d3/d3.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+
+    <!-- build:js({app,.tmp}) js/login.js -->
+    <script src="js/login.js"></script>
+    <!-- endbuild -->
+</body>
+
+
+<div class = "row">
+	<div class = "col-md-6 col-md-offset-3">
+		<%= form_for(:session, url: login_path) do |f| %>
+
+		<%= f.label :email %>
+		<%= f.email_field :email, class: 'form-control' %>
+
+		<%= f.label :password %>
+		<%= link_to "(forgot password)", new_password_reset_path %>
+		<%= f.password_field :password, class: 'form-control' %>
+
+		<%= f.label :remember_me, class: "checkbox inline" do %>
+			<%= f.check_box :remember_me %>
+			<span>Remember me on this computer </span>
+		<% end %>
+
+		<%= f.submit "log in", class: "btn btn-primary" %>
+		<% end %>
+
+		<p>New user? <%= link_to "Sign up now!", signup_path %></p>
+	</div>
+</div>
